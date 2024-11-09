@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bcrypt = require('bcryptjs');
 
 app.use(express.json());
 
@@ -24,9 +25,20 @@ const database = {
     ]
 };
 
+
+
+    login:[
+        {
+            id: '6',
+            hash: ' ',
+            email: 'hana1@gmail.com',
+           
+        }
+    ]
 app.get('/', (req, res) => {
     res.send(database.users);
 });
+
 
 app.post('/signing', (req, res) => {
     const { email, password } = req.body;
@@ -39,8 +51,12 @@ app.post('/signing', (req, res) => {
     }
 });
 
+
 app.post('/register', (req, res) => {
     const { email, name, password } = req.body;
+    bcrypt.hash(password, 8, function(err, hash) {
+        console.log(hash)
+    });
     const newUser = {
         id: String(database.users.length + 1),
         name,
@@ -53,6 +69,7 @@ app.post('/register', (req, res) => {
     res.json(newUser);
 });
 
+
 app.get('/profile/:id', (req, res) => {
     const { id } = req.params;
     const user = database.users.find(user => user.id === id);
@@ -64,22 +81,20 @@ app.get('/profile/:id', (req, res) => {
     }
 });
 
-app.put('/image' ,(req,res) => {
+
+app.put('/image', (req, res) => {
     const { id } = req.body;
-    const user = database.users.find(user => {
-        if (user.id === id){
-            found= true;
-            user.entries++;
-            return res.json(user.entries);
+    const user = database.users.find(user => user.id === id);
 
-        }
-    });
 
-  
-        if(!found){
+    if (user) {
+        user.entries++;
+        res.json(user.entries);
+    } else {
         res.status(400).json("User not found");
-    } 
-})
+    }
+});
+
 
 app.listen(3000, () => {
     console.log('App is running on port 3000');
