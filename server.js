@@ -65,12 +65,18 @@ app.get('/profile/:id', (req, res) => {
 });
 
 app.put('/image' ,(req,res) => {
-    const { id } = req.params;
-    const user = database.users.find(user => user.id === id);
+    const { id } = req.body;
+    const user = database.users.find(user => {
+        if (user.id === id){
+            found= true;
+            user.entries++;
+            return res.json(user.entries);
 
-    if (user) {
-        res.json(user);
-    } else {
+        }
+    });
+
+  
+        if(!found){
         res.status(400).json("User not found");
     } 
 })
