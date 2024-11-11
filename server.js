@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const bcrypt = require('bcryptjs');
+cotestnst bcrypt = require('bcryptjs');
 
 app.use(express.json());
 
@@ -41,11 +41,11 @@ app.get('/', (req, res) => {
 
 
 app.post('/signing', (req, res) => {
-    bcrypt.compare("hana1234", $2a$08$aFDXmTKPDzozlNkpxd3sA.qVpk8IpNeqNLpuiECZ6gKgmaqsudv06, function(err, res) {
+    bcrypt.compare("hana1234", '$2a$08$aFDXmTKPDzozlNkpxd3sA.qVpk8IpNeqNLpuiECZ6gKgmaqsudv06', function(err, res) {
         // res === true
         console.log('first guess',res)
     });
-    bcrypt.compare("veggies", hash, function(err, res) {
+    bcrypt.compare("veggies", '$2a$08$aFDXmTKPDzozlNkpxd3sA.qVpk8IpNeqNLpuiECZ6gKgmaqsudv06', function(err, res) {
         // res === false
         console.log('second guess',res)
     });
