@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-cotestnst bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 app.use(express.json());
 
