@@ -43,14 +43,14 @@ app.get('/', (req, res) => {
 
 
 app.post('/signin', (req, res) => {
-    // bcrypt.compare("hana1234", '$2a$08$aFDXmTKPDzozlNkpxd3sA.qVpk8IpNeqNLpuiECZ6gKgmaqsudv06', function(err, res) {
-    //     // res === true
-    //     console.log('first guess',res)
-    // });
-    // bcrypt.compare("veggies", '$2a$08$aFDXmTKPDzozlNkpxd3sA.qVpk8IpNeqNLpuiECZ6gKgmaqsudv06', function(err, res) {
-    //     // res === false
-    //     console.log('second guess',res)
-    // });
+    bcrypt.compare("hana1234", '$2a$08$aFDXmTKPDzozlNkpxd3sA.qVpk8IpNeqNLpuiECZ6gKgmaqsudv06', function(err, res) {
+        // res === true
+        console.log('first guess',res)
+    });
+    bcrypt.compare("veggies", '$2a$08$aFDXmTKPDzozlNkpxd3sA.qVpk8IpNeqNLpuiECZ6gKgmaqsudv06', function(err, res) {
+        // res === false
+        console.log('second guess',res)
+    });
     
     const { email, password } = req.body;
     const user = database.users.find(user => user.email === email && user.password === password);
