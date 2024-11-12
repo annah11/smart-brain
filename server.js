@@ -88,7 +88,7 @@ app.get('/profile/:id', (req, res) => {
     if (user) {
         res.json(user);
     } else {
-        res.status(400).json("the User not found");
+        res.status(400).json("User not found");
     }
 });
 
