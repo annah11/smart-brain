@@ -17,6 +17,14 @@ const database = {
             joined: new Date(),
         },
         {
+            id: '1',
+            name: 'HANA',
+            password: 'hana1234',
+            email: 'hana1@gmail.com',
+            entries: 0,
+            joined: new Date(),
+        },
+        {
             id: '2',
             name: 'user1',
             password: 'password1',
